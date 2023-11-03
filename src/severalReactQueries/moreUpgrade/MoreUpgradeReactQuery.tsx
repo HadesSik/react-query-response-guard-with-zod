@@ -1,11 +1,9 @@
 import { FC, Suspense } from 'react'
 import DataParserWithErrorBoundary from '../../components/DataParser'
 import {
-  POST_USER_1_CORRECT,
-  TPostUser1CorrectResponse,
-  TPostUser1WrongResponse,
+  useQuery_POSTS_by_UserId_CORRECT,
+  useQuery_POSTS_by_UserId_WRONG,
 } from './apis/posts'
-import useSuspenseQueryFn from './modules/useSuspenseQueryFn'
 
 interface IFMoreUpgradeReactQueryProps {
   className?: string
@@ -14,19 +12,9 @@ interface IFMoreUpgradeReactQueryProps {
 const MoreUpgradeReactQuery: FC<IFMoreUpgradeReactQueryProps> = ({
   className,
 }) => {
-  const { data: correctData } = useSuspenseQueryFn<TPostUser1CorrectResponse>(
-    'GET',
-    {
-      queryKey: [POST_USER_1_CORRECT],
-    }
-  )
+  const { data: correctData } = useQuery_POSTS_by_UserId_CORRECT(1)
 
-  const { data: wrongData } = useSuspenseQueryFn<TPostUser1WrongResponse>(
-    'GET',
-    {
-      queryKey: [POST_USER_1_CORRECT],
-    }
-  )
+  const { data: wrongData } = useQuery_POSTS_by_UserId_WRONG(1)
 
   return (
     <div className={className} style={{ border: '1px solid #ddd' }}>

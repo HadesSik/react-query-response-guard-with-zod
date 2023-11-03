@@ -4,6 +4,7 @@ import './App.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import PureReactQuery from './severalReactQueries/pure/PureReactQuery'
 import UpgradeReactQuery from './severalReactQueries/upgrade/UpgradeReactQuery'
+import MoreUpgradeReactQuery from './severalReactQueries/moreUpgrade/MoreUpgradeReactQuery'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -34,6 +35,7 @@ function App() {
       >
         <PureReactQuery />
         <UpgradeReactQuery />
+        <MoreUpgradeReactQuery />
       </div>
     </QueryClientProvider>
   )
